@@ -37,7 +37,7 @@ RESHAPE THE MATRIX (JAVA):
 	pre.add(1);
 	result.add(pre);
  
-   	for (int i = 2; i <= numRows; i++) 
+   	for (int i = 1; i < numRows; i++) 
     {
 		List<Integer> cur = new ArrayList<>();
  
