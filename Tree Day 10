@@ -13,24 +13,7 @@ class Solution {
             preorderTraversalHelper(list, root.right);
         }
     }
-} 
-
-BINARY TREE INORDER TRAVERSAL (JAVA):
-class Solution {
-    public List<Integer> inorderTraversal(TreeNode root) {
-        List<Integer> list = new ArrayList<>();
-        inorderTraversalHelper(list, root);
-        return list;
-    }
-
-    private void inorderTraversalHelper(List<Integer> list, TreeNode root) {
-        if (root != null) {
-            inorderTraversalHelper(list, root.left);
-            list.add(root.val);
-            inorderTraversalHelper(list, root.right);
-        }
-    }
-} 
+}
 OR
 public class TreeNode {
     int val;
@@ -60,6 +43,23 @@ public class Solution {
         return returnList;
     }
 }
+
+BINARY TREE INORDER TRAVERSAL (JAVA):
+class Solution {
+    public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> list = new ArrayList<>();
+        inorderTraversalHelper(list, root);
+        return list;
+    }
+
+    private void inorderTraversalHelper(List<Integer> list, TreeNode root) {
+        if (root != null) {
+            inorderTraversalHelper(list, root.left);
+            list.add(root.val);
+            inorderTraversalHelper(list, root.right);
+        }
+    }
+} 
 
 BINARY TREE POSTORDER TRAVERSAL (JAVA):
 class Solution {
