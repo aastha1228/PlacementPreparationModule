@@ -1,0 +1,116 @@
+MIDDLE OF THE LINKED LIST (JAVA):
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode middleNode(ListNode head) {
+        int n=0;
+        ListNode curr = head;
+        while(curr!=null)
+        {
+            n++;
+            curr = curr.next;
+        }
+        curr = head;
+        n = n/2;
+        while(n>0)
+        {
+            curr = curr.next;
+            n--;
+        }
+        return curr; 
+    }
+}
+OR
+class Solution {
+    public ListNode middleNode(ListNode head) {
+        int count =1;
+        int middle = 0;
+        ListNode copyNode = head;;
+        while(head.next !=null){
+            head = head.next;
+            count++;
+        }
+        if(count%2 != 0){
+            middle = ((count-1)/2)+1;
+        }
+        else{
+             middle = (count/2)+1;
+        }
+        count =1;
+        ListNode  middleNode = null;
+        while(count != middle){
+            copyNode = copyNode.next;
+            count++;
+        }
+        return copyNode;
+    }
+}
+OR
+class Solution {
+    public ListNode middleNode(ListNode head) {
+        ListNode [] lst = new ListNode[100];
+        int count = 0;
+        while(head != null){
+            lst[count++] = head;
+            head = head.next;
+        }
+        return lst[count/2];
+    }
+}
+OR
+class Solution {
+    public ListNode middleNode(ListNode head) {
+
+        ListNode slow = head;
+        ListNode fast = head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        return slow;
+    }
+}
+
+REMOVE Nth ELEMENT FROM THE LINKED LIST (JAVA):
+class Solution {
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+            if (head == null)
+            return null;
+ 
+        // Store head node
+        ListNode temp = head;
+ 
+        // If head needs to be removed
+        if (n == 0) {
+            head = temp.next; // Change head
+            return temp;
+        }
+ 
+        // Find previous node of the node to be deleted
+        for (int i = n; temp != null && i>0;
+             i--)
+            temp = temp.next;
+ 
+        // If position is more than number of nodes
+        if (temp == null || temp.next == null)
+            return temp;
+ 
+        // Node temp->next is the node to be deleted
+        // Store pointer to the next of node to be deleted
+        ListNode next = temp.next.next;
+ 
+        temp.next = next; // Unlink the deleted node from list
+        return temp;
+   
+    }
+}
