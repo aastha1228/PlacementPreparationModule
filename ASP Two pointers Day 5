@@ -82,35 +82,44 @@ class Solution {
 }
 
 REMOVE Nth ELEMENT FROM THE LINKED LIST (JAVA):
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
 class Solution {
-    public ListNode removeNthFromEnd(ListNode head, int n) {
-            if (head == null)
-            return null;
- 
-        // Store head node
-        ListNode temp = head;
- 
-        // If head needs to be removed
-        if (n == 0) {
-            head = temp.next; // Change head
-            return temp;
+    public ListNode removeNthFromEnd(ListNode head, int position) {
+        ListNode curr = head; int n=0;
+        while(curr!=null)
+        {
+            n++;
+            curr = curr.next;
         }
- 
-        // Find previous node of the node to be deleted
-        for (int i = n; temp != null && i>0;
-             i--)
-            temp = temp.next;
- 
-        // If position is more than number of nodes
-        if (temp == null || temp.next == null)
-            return temp;
- 
-        // Node temp->next is the node to be deleted
-        // Store pointer to the next of node to be deleted
-        ListNode next = temp.next.next;
- 
-        temp.next = next; // Unlink the deleted node from list
-        return temp;
-   
+        if(n<2) return null;  
+  
+        ListNode temp = head;  // Store head node 
+  
+        // If head needs to be removed 
+       if (n-position==0)
+            return head.next;
+  
+        // Find previous node of the node to be deleted 
+        int i=1; 
+        ListNode temp1=head;
+       while(i<n-position)
+        {   i++;
+            temp1=temp1.next;
+        }
+         if(position==n)
+         {temp1.next=null;
+          return temp1;}
+        temp1.next = temp1.next.next;
+      
+        return head;
     }
 }
