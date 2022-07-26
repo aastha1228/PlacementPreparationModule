@@ -74,3 +74,46 @@ class Solution {
         return max;
     }
 }
+
+PERMUTATIONS IN A STRING (JAVA):
+class Solution {
+public boolean checkInclusion(String s, String p) {
+    if(s.length()>p.length())
+        return false;
+    if(s.length()==0) return true;
+    int sc[]=new int[26];
+    int pc[]=new int[26];
+    for(int i=0;i<s.length();i++){
+        sc[s.charAt(i)-'a']++;
+        pc[p.charAt(i)-'a']++;
+    }
+    for(int j=s.length();j<=p.length();j++){   
+        if(Arrays.equals(sc,pc))return true;
+        if(j>=p.length())break;
+        pc[p.charAt(j)-'a']++;
+        pc[p.charAt(j-s.length())-'a']--;
+    }
+    return false;
+}
+}
+OR
+class Solution {
+public boolean checkInclusion(String s, String p) {
+    if(s.length()>p.length())
+        return false;
+    if(s.length()==0) return true;
+    char sc[]=new char[128];
+    char pc[]=new char[128];
+    for(int i=0;i<s.length();i++){
+        sc[s.charAt(i)]++;
+        pc[p.charAt(i)]++;
+    }
+    for(int j=s.length();j<=p.length();j++){   
+        if(Arrays.equals(sc,pc))return true;
+        if(j>=p.length())break;
+        pc[p.charAt(j)]++;
+        pc[p.charAt(j-s.length())]--;
+    }
+    return false;
+}
+}
