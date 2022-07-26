@@ -30,10 +30,9 @@ class Solution {
     public void markLand(int i,int j,int[][]grid){
         if(i<0||i>=grid.length||j<0||j>=grid[0].length||grid[i][j]!=1)
             return;
-			//mark the visited blocks
-        grid[i][j]=2;
-		//count the area
-        countArea++; 
+        grid[i][j]=0;    //VISITED BLOCKS
+		
+        countArea++;    //count the area
 		//move horizontaly and vertically
         markLand(i+1,j,grid);
         markLand(i,j+1,grid);
