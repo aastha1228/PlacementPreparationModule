@@ -64,3 +64,22 @@ class Solution {
     }
 }
  
+ TRIANGLE (JAVA):
+  public int minimumTotal(List<List<Integer>> triangle) {
+    int n = triangle.size();
+
+    // Fill DP array with last row
+    int[] dp = new int[n];
+    for (int r = 0; r < n; r++) dp[r] = triangle.get(n - 1).get(r);
+
+    for (int r = n - 2; r >= 0; r--) { // start from second last
+      for (int c = 0; c < triangle.get(r).size(); c++) {
+        int currTriangleNodeValue = triangle.get(r).get(c);
+        dp[c] =
+            currTriangleNodeValue // current node value
+                + Math.min(dp[c], dp[c + 1]); //  Min of bottom moves
+      }
+    }
+
+    return dp[0]; // search space narrows down to index 0
+  }
