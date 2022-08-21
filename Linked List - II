@@ -26,8 +26,7 @@ class Solution {
         {
             if (current.val == current.next.val)
             {
-                ListNode nextNext = current.next.next;
-                current.next = nextNext;
+                current.next = current.next.next;
             }
             else {
                 current = current.next;    // only advance if no deletion
